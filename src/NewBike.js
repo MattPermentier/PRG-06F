@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 const URI_COLLECTION = "http://145.24.222.138:8000/bikes";
 
@@ -23,7 +24,7 @@ export function NewBike(props) {
             },
             body: JSON.stringify(bike)
         })
-            .then((response) => props.bikesRefreshHandler())
+            .then((response) => props.refreshBikesHandler())
     }
 
     const onChangeHandler = (event) => {
@@ -36,10 +37,10 @@ export function NewBike(props) {
     return <section>
         <h2>New Bike</h2>
         <form action="">
-            <input type="text" value={bike.brand} name="brand" onChange={onChangeHandler}/><br/>
-            <input type="text" value={bike.model} name="model" onChange={onChangeHandler}/><br/>
-            <input type="text" value={bike.power} name="power" onChange={onChangeHandler}/><br/>
-            <button onClick={saveBike}>Save</button>
+            <input type="text" value={bike.brand} name="brand" onChange={onChangeHandler} placeholder="brand" /><br/>
+            <input type="text" value={bike.model} name="model" onChange={onChangeHandler} placeholder="model" /><br/>
+            <input type="text" value={bike.power} name="power" onChange={onChangeHandler} placeholder="power" /><br/>
+            <button onClick={saveBike}><Link to="/">Save</Link></button>
         </form>
 
     </section>;
